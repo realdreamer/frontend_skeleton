@@ -18,7 +18,7 @@ module.exports = {
     style: path.resolve(__dirname, 'app/css/base.scss')
   },
   output: {
-    filename: '[name].js',
+    filename: 'js/[name].js',
     path: path.resolve(__dirname, 'build'),
     publicPath: 'build'
   },
@@ -49,7 +49,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: '[name].css',
+      filename: 'css/[name].css',
       publicPath: 'build'
     }),
     new CleanWebpackPlugin(pathsToClean, cleanOptions),

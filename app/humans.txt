@@ -1,0 +1,17 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Front-end developer: Mohamed Ismail
+    From: Chennai, India
+
+# THANKS
+
+    HTML5 Boilerplate: https://html5boilerplate.com/
+
+# TECHNOLOGY COLOPHON
+
+    Doctype: HTML5
+    HTML5, CSS3, ES6, Webpack
+    HTML5 Boilerplate
