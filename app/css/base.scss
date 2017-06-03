@@ -1,0 +1,5 @@
+@import 'variables';
+body {
+  background-color: $body_bg;
+  font: $base_font_size/1 $font_family;
+}
