@@ -14,7 +14,8 @@ let cleanOptions = {
 module.exports = {
   context: __dirname,
   entry: {
-    main: path.resolve(__dirname, 'app/js/index.js')
+    main: path.resolve(__dirname, 'app/js/index.js'),
+    style: path.resolve(__dirname, 'app/css/base.scss')
   },
   output: {
     filename: '[name].js',
@@ -33,21 +34,23 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: [
+        use: [
           'style-loader',
           'css-loader?sourceMap'
         ]
       },
       {
         test: /\.(scss|scss)$/,
-        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader', 'sass-loader']
+        })
       }
     ]
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: 'build/[name].bundle.css',
-      allChunks: true,
+      filename: '[name].css',
+      publicPath: 'build'
     }),
     new CleanWebpackPlugin(pathsToClean, cleanOptions),
   ],
