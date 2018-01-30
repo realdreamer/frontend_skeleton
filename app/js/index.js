@@ -1,4 +1,6 @@
 'use strict';
+import '../css/base.scss';
+
 const hello = 'Hello world';
 console.log(hello, 'sdkjflskjdflk');
 const h1 = document.createElement('h1');

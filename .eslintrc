@@ -10,6 +10,9 @@
     "no-nested-ternary": 1,
     "padded-blocks": [1, "never"],
     "space-before-function-paren": ["error", "always"],
-    "space-before-blocks": [1, "always"],
+    "space-before-blocks": [1, "always"]
+  },
+  "parserOptions": {
+    "sourceType": "module"
   }
 }
