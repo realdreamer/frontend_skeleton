@@ -17,3 +17,10 @@ body {
   font-family: $font-family;
   padding: $body-padding;
 }
+
+.sample-image {
+  background: url('../assets/img/1.jpg') center center no-repeat;
+  background-size: cover;
+  height: 200px;
+  width: 200px;
+}

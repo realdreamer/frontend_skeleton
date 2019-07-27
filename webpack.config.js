@@ -20,7 +20,7 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
     corejs: 'core-js/stable',
-    main: path.resolve(__dirname, 'app/js/index.js'),
+    main: path.resolve(__dirname, 'src/js/index.js'),
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -121,17 +121,14 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './app/index.html',
-      favicon: './app/favicon.ico',
+      template: './src/index.html',
+      favicon: './src/favicon.ico',
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new CopyWebpackPlugin([
-      {
-        context: __dirname,
-        from: 'app/img/**/*',
-        to: 'build/',
-      },
-    ]),
+    new CopyWebpackPlugin([{
+      from: 'src/assets/**/*',
+      to: 'build/assets/**/*',
+    }]),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional

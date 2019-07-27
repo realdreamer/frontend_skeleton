@@ -8,3 +8,7 @@ h1.appendChild(txt);
 document.body.appendChild(h1);
 const world = 'world';
 console.log(world, 'hello ismail');
+
+const add = x => x + 1;
+
+console.log(add);
