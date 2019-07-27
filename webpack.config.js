@@ -1,25 +1,16 @@
-'use strict';
 const path = require('path');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
-console.log(process.env.NODE_ENV);
-
 const pathsToClean = [
-  'build'
+  'build',
 ];
-
-const cleanOptions = {
-  verbose: true,
-  dry: false
-};
 
 module.exports = {
   // Don't attempt to continue if there are any errors.
@@ -28,16 +19,16 @@ module.exports = {
   context: __dirname,
   devtool: 'cheap-module-source-map',
   entry: {
-    polyfill: '@babel/polyfill',
-    main: path.resolve(__dirname, 'app/js/index.js')
+    corejs: 'core-js/stable',
+    main: path.resolve(__dirname, 'app/js/index.js'),
   },
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'js/[name].js?[hash:8]',
-    publicPath: '/'
+    publicPath: '/',
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.scss', '.css']
+    extensions: ['.js', '.jsx', '.scss', '.css'],
   },
   module: {
     rules: [
@@ -45,7 +36,7 @@ module.exports = {
         enforce: 'pre',
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'eslint-loader'
+        loader: 'eslint-loader',
       },
       // ** ADDING/UPDATING LOADERS **
       // The "file" loader handles all assets unless explicitly excluded.
@@ -66,12 +57,12 @@ module.exports = {
           /\.bmp$/,
           /\.gif$/,
           /\.jpe?g$/,
-          /\.png$/
+          /\.png$/,
         ],
         loader: require.resolve('file-loader'),
         options: {
-          name: '[path][name].[ext]?[hash]'
-        }
+          name: '[path][name].[ext]?[hash]',
+        },
       },
       // "url" loader works like "file" loader except that it embeds assets
       // smaller than specified limit in bytes as data URLs to avoid requests.
@@ -81,13 +72,13 @@ module.exports = {
         loader: require.resolve('url-loader'),
         options: {
           limit: 10000,
-          name: '[path][name].[ext]?[hash]'
-        }
+          name: '[path][name].[ext]?[hash]',
+        },
       },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: require.resolve('babel-loader')
+        loader: require.resolve('babel-loader'),
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -97,20 +88,19 @@ module.exports = {
             loader: require.resolve('css-loader'),
             options: {
               importLoaders: 1,
-              minimize: true,
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           'postcss-loader',
           {
             loader: require.resolve('sass-loader'),
             options: {
-              sourceMap: true
+              sourceMap: true,
             },
-          }
+          },
         ],
-      }
-    ]
+      },
+    ],
   },
   devServer: {
     // WebpackDevServer is noisy by default so we emit custom message instead
@@ -127,7 +117,7 @@ module.exports = {
     // Enable HTTPS if the HTTPS environment variable is set to 'true'
     // https: protocol === 'https',
     historyApiFallback: true,
-    hot: true
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -139,8 +129,8 @@ module.exports = {
       {
         context: __dirname,
         from: 'app/img/**/*',
-        to: 'build/'
-      }
+        to: 'build/',
+      },
     ]),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -148,7 +138,11 @@ module.exports = {
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     }),
-    new CleanWebpackPlugin(pathsToClean, cleanOptions)
+    new CleanWebpackPlugin({
+      dry: false,
+      verbose: true,
+      cleanOnceBeforeBuildPatterns: pathsToClean,
+    }),
   ],
   optimization: {
     minimizer: [
@@ -157,9 +151,9 @@ module.exports = {
           map: {
             inline: false, // set to false if you want CSS source maps
             annotation: true,
-          }
-        }
-      })
-    ]
-  }
+          },
+        },
+      }),
+    ],
+  },
 };

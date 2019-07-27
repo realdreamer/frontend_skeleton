@@ -1,0 +1,19 @@
+@import 'variables';
+@import 'vendor/normalize.css';
+@import 'vendor/main.css';
+
+* {
+  box-sizing: border-box;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  background-color: $body-bg;
+  color: $base-color;
+  font-family: $font-family;
+  padding: $body-padding;
+}

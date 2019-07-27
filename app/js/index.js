@@ -1,5 +1,4 @@
-'use strict';
-import '../css/base.scss';
+import '../scss/base.scss';
 
 const hello = 'Hello world';
 console.log(hello, 'sdkjflskjdflk');

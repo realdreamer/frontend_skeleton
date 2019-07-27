@@ -1,45 +1,56 @@
 {
   "name": "frontend_skeleton",
   "version": "1.0.0",
-  "description": "Skelton for all my front end projects",
+  "description": "Skeleton for all my front end projects",
+  "author": "Mohamed Ismail",
   "main": "index.js",
+  "license": "ISC",
   "scripts": {
     "start": "yarn install && yarn run dev",
     "dev": "NODE_ENV='development' webpack-dev-server --progress --open",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV='production' webpack"
   },
-  "author": "Mohamed Ismail",
-  "license": "ISC",
+  "lint-staged": {
+    "*.js": [
+      "eslint"
+    ]
+  },
   "devDependencies": {
-    "@babel/core": "^7.1.5",
-    "@babel/preset-env": "^7.1.5",
-    "babel-eslint": "^8.0.3",
-    "babel-loader": "^8.0.4",
-    "clean-webpack-plugin": "^0.1.19",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-eslint": "^10.0.2",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^4.6.0",
-    "css-loader": "^1.0.1",
-    "eslint": "^5.9.0",
-    "eslint-loader": "^2.1.1",
-    "file-loader": "^2.0.0",
+    "css-loader": "^3.1.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-loader": "^2.2.1",
+    "eslint-plugin-import": "^2.18.2",
+    "file-loader": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",
-    "lodash": "^4.17.13",
-    "mini-css-extract-plugin": "^0.4.4",
-    "node-sass": "^4.10.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "husky": "^3.0.1",
+    "lint-staged": "^9.2.1",
+    "lodash": "^4.17.15",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-loader": "^3.0.0",
-    "postcss-preset-env": "^6.4.0",
-    "sass-lint": "^1.12.1",
+    "postcss-preset-env": "^6.7.0",
+    "sass-lint": "^1.13.1",
     "sass-loader": "^7.1.0",
     "sasslint-loader": "^0.0.1",
     "style-loader": "^0.23.1",
-    "url-loader": "^1.1.2",
-    "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.11"
+    "url-loader": "^2.1.0",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.0.0"
+    "core-js": "^3.1.4"
   }
 }
